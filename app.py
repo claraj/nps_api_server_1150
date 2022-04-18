@@ -13,7 +13,7 @@ db = 'nps.db'
 def send_park_list():
     con = sqlite3.connect(db)
     data = con.execute('SELECT park_code, name FROM parks ORDER BY park_code')
-    parks = [ { 'park_id': row[0], 'name': row[1]} for row in data ]
+    parks = [ { 'park_code': row[0], 'name': row[1]} for row in data ]
     con.close()
     return jsonify(parks)
 
